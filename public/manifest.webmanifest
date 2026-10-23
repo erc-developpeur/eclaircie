@@ -1,0 +1,19 @@
+{
+  "name": "Éclaircie — l'actualité sans l'anxiété",
+  "short_name": "Éclaircie",
+  "description": "L'actualité qui vous ressemble, filtrée par IA.",
+  "start_url": "./#/feed",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFCF4",
+  "theme_color": "#164BFF",
+  "lang": "fr",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Mes favoris", "url": "./#/favorites" },
+    { "name": "Sauvegardés", "url": "./#/saved" }
+  ]
+}

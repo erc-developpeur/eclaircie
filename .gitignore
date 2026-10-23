@@ -1,0 +1,5 @@
+# La clé API ne doit jamais être partagée ni envoyée sur GitHub
+.env
+data/
+node_modules/
+.claude/
