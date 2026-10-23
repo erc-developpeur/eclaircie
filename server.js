@@ -357,6 +357,13 @@ http.createServer(async (req, res) => {
   fs.readFile(file, (err, data) => err
     ? send(res, 404, 'introuvable', 'text/plain')
     : send(res, 200, data, MIME[path.extname(file)] || 'application/octet-stream'));
+}).on('error', e => {
+  if (e.code !== 'EADDRINUSE') throw e;
+  console.error(`\n⚠️  Le port ${PORT} est déjà utilisé, sans doute par un serveur Éclaircie encore ouvert.
+   → Fermez l'autre terminal (ou Ctrl+C dedans), ou arrêtez-le avec :
+     Stop-Process -Id (Get-NetTCPConnection -LocalPort ${PORT} -State Listen).OwningProcess
+   → Ou lancez sur un autre port :  $env:PORT=3001; node --env-file-if-exists=.env server.js\n`);
+  process.exit(1);
 }).listen(PORT, () => {
   console.log(`Éclaircie → http://localhost:${PORT}  (IA : ${AI_KEY ? AI_LABEL : 'désactivée, filtre par mots-clés'})`);
   // Préchargement : les actus sont prêtes avant la première visite, puis rafraîchies régulièrement.
